@@ -22,9 +22,6 @@ func main() {
 
 	c := calculatorpb.NewCalculatorServiceClient(cc)
 
-	// doUnary(c)
-	// doServerStreaming(c)
-	// doClientStreaming(c)
 	doBiDirectionalStreaming(c)
 }
 
@@ -107,7 +104,7 @@ func doBiDirectionalStreaming(c calculatorpb.CalculatorServiceClient) {
 		stream.CloseSend()
 	}()
 
-	// Receive go routine
+	// Receive goroutine
 	go func() {
 		for {
 			res, err := stream.Recv()
